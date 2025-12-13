@@ -1,12 +1,21 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 const Navbar = () => {
   return (
-    <div>
-      <Link to='/'>Home</Link>
-      <Link to='/products'>Products</Link>
+    <div className='flex items-center gap-16 bg-gray-700 py-3 px-8'>
+      <img className='w-12' src="https://cdn-icons-png.flaticon.com/512/3225/3225209.png" alt="" />
+      <div className='text-xl flex gap-7'>
+        <MenuBar to={'/'} title={'Home'} />
+        <MenuBar to={'/products'} title={'Products'} />
+      </div>
     </div>
+  )
+}
+
+const MenuBar = ({ to, title }) => {
+  return (
+    <NavLink className={({isActive})=> isActive?'text-[lightseagreen]' : ''} to={to}>{title}</NavLink>
   )
 }
 
