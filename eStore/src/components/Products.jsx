@@ -6,7 +6,6 @@ import Loader from './Loader'
 const Products = () => {
   const [products, setProducts] = useState([]);
   const [loader, setLoader] = useState(false);
-  const navigate = useNavigate();
 
   const fetchData = async () => {
     setLoader(true)
@@ -18,8 +17,6 @@ const Products = () => {
   useEffect(() => {
     fetchData()
   }, [])
-
-  console.log(products)
 
   if (loader) {
     return (
@@ -43,8 +40,9 @@ const Products = () => {
 }
 
 const DisplayProducts = ({ key, items }) => {
+  const navigate = useNavigate();
   return (
-    <div className='group bg-zinc-800 rounded-xl p-4 flex flex-col h-full shadow-md hover:shadow-xl transition-all duration-300 gap-1 cursor-pointer'>
+    <div className='group bg-zinc-800 rounded-xl p-4 flex flex-col h-full shadow-md hover:shadow-xl transition-all duration-300 gap-1 cursor-pointer' onClick={()=>navigate(`/products/${items.id}`)}>
       <img src={items.image} alt="" className="aspect-square object-contain p-4 group-hover:scale-90 transition-all duration-400" />
 
       <h1 className='line-clamp-2 min-h-[40px] text-white group-hover:text-indigo-400 transition'>{items.title}</h1>

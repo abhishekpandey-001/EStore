@@ -4,20 +4,25 @@ import App from './App.jsx'
 import Home from './components/Home.jsx'
 import Products from './components/Products.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import SingleProduct from './components/SingleProduct.jsx'
 
 
-const router  = createBrowserRouter([
+const router = createBrowserRouter([
   {
-    path:'/',
-    element: <App/>,
+    path: '/',
+    element: <App />,
     children: [
       {
         path: '/',
-        element: <Home/>
+        element: <Home />
       },
       {
         path: '/products',
-        element: <Products/>
+        element: <Products />
+      },
+      {
+        path: '/products/:id',
+        element: <SingleProduct />
       }
     ]
   }
@@ -25,7 +30,7 @@ const router  = createBrowserRouter([
 
 
 createRoot(document.getElementById('root')).render(
- 
-<RouterProvider router={router} />
+
+  <RouterProvider router={router} />
 
 )
