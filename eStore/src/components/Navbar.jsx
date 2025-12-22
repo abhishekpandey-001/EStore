@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 
 const Navbar = () => {
   return (
-    <div className='flex items-center gap-16 bg-gray-700 py-3 px-8'>
+    <div className='flex items-center gap-16 bg-gray-700 py-3 px-4 sticky top-0 z-20'>
       <img className='w-12' src="https://cdn-icons-png.flaticon.com/512/3225/3225209.png" alt="" />
       <div className='text-xl flex gap-7'>
         <MenuBar to={'/'} title={'Home'} />
