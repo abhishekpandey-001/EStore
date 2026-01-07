@@ -7,6 +7,7 @@ const SingleProduct = () => {
     const { id } = useParams();
     const [products, setProducts] = useState({});
     const [loader, setLoader] = useState(false);
+    const [cartButton, setCartButton] = useState(false);
 
     const fetchData = async () => {
         setLoader(true)
@@ -27,6 +28,12 @@ const SingleProduct = () => {
             <Loader />
         )
     }
+
+    const handleCartClick = () => {
+        setCartButton(true)
+    }
+
+
     return (
         <div className="min-h-screen bg-zinc-900 p-6 flex justify-center">
             <div className="max-w-5xl w-full bg-zinc-800 rounded-2xl p-6 
@@ -75,14 +82,48 @@ const SingleProduct = () => {
                     </p>
 
                     {/* CTA */}
-                    <button className="mt-4 bg-indigo-600 hover:bg-indigo-500 
+
+                    {
+                        cartButton ? (
+                            <>
+                                {/* Quantity Stepper */}
+                                <div className="mt-4 flex items-center bg-zinc-900 border border-zinc-700 rounded-xl overflow-hidden w-fit">
+
+                                    {/* Minus */}
+                                    <button
+                                    onClick={()=>decrement()}
+                                        className="px-4 py-3 text-lg text-white hover:bg-zinc-800 active:scale-95 transition"
+                                    >
+                                        −
+                                    </button>
+
+                                    {/* Count */}
+                                    <span className="px-6 py-3 text-sm font-semibold text-white select-none">
+                                        1
+                                    </span>
+
+                                    {/* Plus */}
+                                    <button
+                                        className="px-4 py-3 text-lg text-white hover:bg-indigo-600 active:scale-95 transition"
+                                    >
+                                        +
+                                    </button>
+                                </div>
+
+                            </>
+                        ) :
+
+                            (<button
+                                onClick={handleCartClick}
+                                className="mt-4 bg-indigo-600 hover:bg-indigo-500 
                            text-white py-3 rounded-xl transition">
-                        Add to Cart
-                    </button>
+                                Add to Cart
+                            </button>)
+                    }
 
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 

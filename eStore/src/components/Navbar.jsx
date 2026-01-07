@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
+import { FaOpencart } from "react-icons/fa";
 
 const Navbar = () => {
   const navigate = useNavigate()
@@ -35,15 +36,27 @@ const Navbar = () => {
           >
             Shop
           </button>
+
+          <div className='mt-1'>
+            <FaOpencart className='text-2xl' />
+            <span className='text-red-600 absolute top-1.5 w-4 mt-0.5 h-4 text-xs font-bold rounded-4xl text-center bg-white'>1</span>
+          </div>
         </div>
 
         {/* Mobile menu button */}
-        <button
-          onClick={() => setOpen(!open)}
-          className="sm:hidden text-gray-300 hover:text-white"
-        >
-          ☰
-        </button>
+
+        <div className='flex flex-row justify-center items-center gap-2 sm:hidden'>
+          <button
+            onClick={() => setOpen(!open)}
+            className="sm:hidden text-gray-300 hover:text-white"
+          >
+            ☰
+          </button>
+          <div>
+            <FaOpencart className='sm:hidden text-xl' />
+            <span className='text-red-600 absolute top-1 w-5 h-5 text-xs font-bold rounded-4xl text-center bg-white'>1</span>
+          </div>
+        </div>
       </div>
 
       {/* Mobile dropdown */}
