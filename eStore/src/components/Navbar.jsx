@@ -1,10 +1,13 @@
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { FaOpencart } from "react-icons/fa";
+import { useMyContext } from '../MyContext';
+
 
 const Navbar = () => {
   const navigate = useNavigate()
   const [open, setOpen] = useState(false)
+  const data = useMyContext()
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50
@@ -39,7 +42,7 @@ const Navbar = () => {
 
           <div className='mt-1'>
             <FaOpencart className='text-2xl' />
-            <span className='text-red-600 absolute top-1.5 w-4 mt-0.5 h-4 text-xs font-bold rounded-4xl text-center bg-white'>1</span>
+            <span className='text-red-600 absolute top-1.5 w-4 mt-0.5 h-4 text-xs font-bold rounded-4xl text-center bg-white'>{data.cart}</span>
           </div>
         </div>
 
@@ -54,7 +57,7 @@ const Navbar = () => {
           </button>
           <div>
             <FaOpencart className='sm:hidden text-xl' />
-            <span className='text-red-600 absolute top-1 w-5 h-5 text-xs font-bold rounded-4xl text-center bg-white'>1</span>
+            <span className='text-red-600 absolute top-1 w-5 h-5 text-xs font-bold rounded-4xl text-center bg-white'>{data.cart}</span>
           </div>
         </div>
       </div>

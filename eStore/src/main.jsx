@@ -5,6 +5,7 @@ import Home from './components/Home.jsx'
 import Products from './components/Products.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import SingleProduct from './components/SingleProduct.jsx'
+import { MyContextProvider } from './MyContext.jsx'
 
 
 const router = createBrowserRouter([
@@ -31,6 +32,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
 
-  <RouterProvider router={router} />
+  <MyContextProvider>
+    <RouterProvider router={router} />
+  </MyContextProvider>
 
 )

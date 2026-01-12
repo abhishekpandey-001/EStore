@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import Loader from './Loader'
+import { useMyContext } from '../MyContext'
 
 const SingleProduct = () => {
+    const data = useMyContext()
     const { id } = useParams();
     const [products, setProducts] = useState({});
     const [loader, setLoader] = useState(false);
@@ -15,7 +17,6 @@ const SingleProduct = () => {
         setProducts(response.data);
         setLoader(false)
     }
-    console.log(products)
 
     useEffect(() => {
         fetchData()
@@ -91,7 +92,7 @@ const SingleProduct = () => {
 
                                     {/* Minus */}
                                     <button
-                                    onClick={()=>decrement()}
+                                    onClick={()=>data.decreaseCartValue()}
                                         className="px-4 py-3 text-lg text-white hover:bg-zinc-800 active:scale-95 transition"
                                     >
                                         −
@@ -99,11 +100,12 @@ const SingleProduct = () => {
 
                                     {/* Count */}
                                     <span className="px-6 py-3 text-sm font-semibold text-white select-none">
-                                        1
+                                        {data.cart}
                                     </span>
 
                                     {/* Plus */}
                                     <button
+                                    onClick={()=>data.increaseCartValue()}
                                         className="px-4 py-3 text-lg text-white hover:bg-indigo-600 active:scale-95 transition"
                                     >
                                         +
